@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Wyah</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/admin.css">
+   <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<style type="">
+    input {
+   padding: 0;
+    border: 1px solid;
+    outline: 0;
+    background: white;
+    margin: 10px;
+        height: 46px;
+    width: 47px;
+    border-right: 5px;
+    text-align: center;
+}
+  </style>
+
+<body style="background-color:black;">
+
+
+
+<!-- Header Section-->
+<div class="main__div" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="images/Group4082.png" class="group-wyah">
+      </div>
+      <div class="col-md-6" >
+        <div class="inputs-sets">
+          <h1 class="register-3">Enter OTP</h1>
+   <div class="userinput"> 
+     <input type="number" name="otp"id="ist" maxlength="1" onkeyup="clickEvent(this,'sec')">
+      <input type="number" name="otp" id="sec" maxlength="1" onkeyup="clickEvent(this,'third')">
+       <input type="number" name="otp" id="third" maxlength="1" onkeyup="clickEvent(this,'fourth')">
+        <input type="number" name="otp"  id="fourth"maxlength="1">
+   </div>
+     <p class="john">Enter OTP Which Has Been Sent To <br>John@xyz.com</p>
+<div class="verify">
+    <a href="dashboard"> <button class="btn btn-primary verify">Verify</button></a>
+<p class="recieve-otp">Did'nt recieve OTP ?</p>
+   </div>
+    </div>
+
+  </div>
+  </div>
+    </div>
+<div>
+
+</div>
+<!-- <?php include( 'include/admin-footer.php');?> -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-multiselect.js"></script>
+ <!--  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+  <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/select2.min.js"></script>
+ <!--    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
+
+<script type="text/javascript">
+  
+function clickEvent(first,last){
+     if(first.value.length){
+      documnet.getElementByID('last').focus();
+     }
+}
+
+</script>

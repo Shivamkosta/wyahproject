@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wyah</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/admin.css">
+   <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<style type="text/css">
+  
+
+.keep-me-signes input[type="checkbox"] {
+    position: relative;
+    opacity: 1;
+    z-index: 0;
+    width: 21px;
+}
+</style>
+
+
+
+<body style="background-color:black;">
+
+
+
+<!-- Header Section-->
+<div class="main__div" style="background-image: url();">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-6">
+       <img src="images/Group4082.png">
+      </div>
+      <div class="col-md-6" >
+        <div >
+     <div>
+       <h1 class="register-2">Register</h1>
+       <p class="welcome-p">Welcome! Let's get you on board.</p>
+     </div>
+     <div>
+      <form action="/api/registration" method="post" enctype="multipart/form-data">
+         <input type="text"
+            name="fullname"
+            required="true" 
+            class="form-control password" 
+            placeholder="Full Name"
+            value="<%= fullname %>"
+            autocomplete="off" 
+          />
+
+          <input type="email" 
+            name="email" 
+            required="true" 
+            class="form-control password" 
+            placeholder="Email"
+            value="<%= email %>"
+            autocomplete="off"
+          />
+
+          <div class="form-group" >
+            
+            <select class="form-control password" name="city"  
+            autocomplete="off" value="<%= city %>"  required="true" id="exampleFormControlSelect1">
+                  <option>Agra</option>
+                  <option>Gwalior</option>
+                  <option>Indore</option>
+                  <option>Bhopal</option>
+                  <option>Ratlam</option>
+            </select>
+          </div>
+
+            <input 
+              id="phone" 
+              name="phone" 
+              required="true" 
+              type="number" 
+              value="<%= phone %>"
+              autocomplete="off" 
+              class="form-control password"
+            />
+
+            <span id="valid-msg" class="hide">Valid</span>
+            <span id="error-msg" class="hide">Invalid number</span>
+            <!-- <input type="text" name="" class="form-control password" placeholder="Phone Number" > -->
+            <input 
+              type="password" 
+              name="password" 
+              required="true"  
+              class="form-control password"
+              placeholder="Password" 
+              value="<%= password %>"
+              autocomplete="off" 
+            />
+
+            <input 
+              type="password" 
+              name="confirmpassword" 
+              required="true"  
+              class="form-control password" 
+              placeholder="Confirm-Password" 
+              value="<%= confirmpassword %>"
+              autocomplete="off" 
+            />
+
+          <div class="keep-me-signes">
+            <input type="checkbox"  required="true" name=""/>&nbsp;<span class="ticking">By ticking "Register" i accept the<br><p class="wyh-ticking">WYAH Terma and Conditions</p></span>
+          </div>
+   
+          <div class="captchs">
+            <div class="captcha">
+              <div class="spinner">
+                <label>
+                  <input type="checkbox" onclick="$(this).attr('disabled','disabled');"/>
+                  <span class="checkmark"><span>&nbsp;</span></span>
+                </label>
+              </div>
+            <div class="text">
+                I'm not a robot
+          </div>
+          <div class="logo">
+            <img src="https://forum.nox.tv/core/index.php?media/9-recaptcha-png/"/>
+              <p>reCAPTCHA</p>
+              <small>Privacy - Terms</small>
+          </div>
+        </div>
+        </div>
+      </form>
+       <div class="register-in-button">
+          <a href="signin"> <button class="btn btn-primary register">Register</button></a>
+        </div>
+         <div class="sign-register">
+          <p>Dont have an account?<a href="signin" style="color: #587FFF;">Sign In</a></p>
+        </div>
+     </div>
+     <div>
+       
+     </div>
+      </div>
+    </div>
+    </div>
+    </div>
+<div>
+
+</div>
+<!-- {{!-- <?php include( 'include/admin-footer.php');?> --}} -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-multiselect.js"></script>
+ <!--  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+  <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/select2.min.js"></script>
+ <!--    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
+<script type="text/javascript">
+  
+var telInput = $("#phone"),
+  errorMsg = $("#error-msg"),
+  validMsg = $("#valid-msg");
+
+// initialise plugin
+telInput.intlTelInput({
+
+  allowExtensions: true,
+  formatOnDisplay: true,
+  autoFormat: true,
+  autoHideDialCode: true,
+  autoPlaceholder: true,
+  defaultCountry: "auto",
+  ipinfoToken: "yolo",
+
+  nationalMode: false,
+  numberType: "MOBILE",
+  //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+  preferredCountries: ['sa', 'ae', 'qa','om','bh','kw','ma'],
+  preventInvalidNumbers: true,
+  separateDialCode: true,
+  initialCountry: "auto",
+  geoIpLookup: function(callback) {
+  $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    var countryCode = (resp && resp.country) ? resp.country : "";
+    callback(countryCode);
+  });
+},
+   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
+});
+
+var reset = function() {
+  telInput.removeClass("error");
+  errorMsg.addClass("hide");
+  validMsg.addClass("hide");
+};
+
+// on blur: validate
+telInput.blur(function() {
+  reset();
+  if ($.trim(telInput.val())) {
+    if (telInput.intlTelInput("isValidNumber")) {
+      validMsg.removeClass("hide");
+    } else {
+      telInput.addClass("error");
+      errorMsg.removeClass("hide");
+    }
+  }
+});
+
+// on keyup / change flag: reset
+telInput.on("keyup change", reset);
+
+
+
+</script>

@@ -1,0 +1,108 @@
+ <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-multiselect.js"></script>
+   <!--  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+    <script src="js/jquery.dataTables.min.js"></script>
+      <script src="js/select2.min.js"></script>
+   <!--    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="">
+  $('#inputDate').datepicker({
+});
+</script>
+
+<script type="">
+  $('#inputDate-1').datepicker({
+});
+</script>
+
+     
+  <script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+  <!-- <script>
+    $('#wrapper').click(function(e){
+    e.stopPropagation();
+     $('#wrapper').toggleClass('toogled');
+});
+$('#wrapper').click(function(e){
+    e.stopPropagation();
+});
+$('body,html').click(function(e){
+       $('#wrapper').removeClass('toogled');
+});
+  </script> -->
+
+      <script>
+      $("#single").select2({
+          placeholder: "Destination",
+          allowClear: true
+      });
+      $("#single2").select2({
+          placeholder: "Lisiting",
+          allowClear: true
+      });
+    </script>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+    
+    <script>    $(document).ready(function() {
+        $('#multiple-checkboxes').multiselect({
+          includeSelectAllOption: true,
+        });
+    });</script>
+
+   <script>
+   const $button  = document.querySelector('#sidebar-toggle');
+const $wrapper = document.querySelector('#wrapper');
+
+$button.addEventListener('click', (e) => {
+  e.preventDefault();
+  $wrapper.classList.toggle('toggled');
+});
+  </script>
+
+
+</body>
+
+</html>

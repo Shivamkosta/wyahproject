@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wyah</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/admin.css">
+   <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="background-color:black;">
+
+
+
+<!-- Header Section-->
+<div class="main__div" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="images/Group4082.png" class="group-wyah">
+      </div>
+      <div class="col-md-6">
+     
+        <div class="sgn_in">
+         <h1 class="sign-inn">Sign In</h1>
+        </div>
+        <div class="form-padding">
+          <form action="/api/dashboard" method="post" enctype="multipart/form-data">
+          
+            <input 
+              type="text" 
+              name="email" 
+              class="form-control password" 
+              placeholder="email" 
+              autocomplete="off"
+              required="true"
+              
+              />
+          
+            <input 
+              type="password" 
+              name="password" 
+              class="form-control password" 
+              placeholder="password"
+              
+              autocomplete="off"
+              required="true"
+            />
+         
+          <a href="forgetpassword" style="color: #587FFF;">Fogot Password?</a>
+          <div class="keep-me-signed">
+            <input type="checkbox" name="">&nbsp;<span>Keep me signed in</span>
+          </div>
+          </form>
+          <div class="sign-in-button">
+          <a href="dashboard"> <button class="btn btn-primary signins">Sign In</button></a>
+        </div>
+        <div class="sign-register">
+          <p>Dont have an account?<a href="" style="color: #587FFF;">Register Now</a></p>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div>
+
+    <!-- {{!-- include footer --}} -->
+     <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-multiselect.js"></script>
+   <!--  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+    <script src="js/jquery.dataTables.min.js"></script>
+      <script src="js/select2.min.js"></script>
+   <!--    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
+</div>
+<!-- {{!-- <?php include( 'include/admin-footer.php');?> --}} -->

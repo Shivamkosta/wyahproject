@@ -1,0 +1,366 @@
+<!-- {{!-- <?php include( 'include/admin-header.php'); ?> --}}
+{{!-- <script src="include/admin-header.hbs"></script> --}}
+{{!-- <link rel="stylesheet" type="text/hbs" href="include/admin-header.hbs"> --}} -->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Wyahh</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <link rel="icon" href="images/favicon.png" type="image/x-icon"> -->
+      <!--  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" type="text/css" href="css/admin.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/bootstrap-multiselect.css">
+      <link href="css/select2.min.css" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+      <link href="css/intlTelInput.css" rel="stylesheet" media="screen">
+   </head>
+   <div id="wrapper">
+   <aside id="sidebar-wrapper" class="shadow1">
+      <div class="sidebar-brand">
+         <a href="dashboard">
+         <img src="images/Image1.png" class="desktop-logo"></a>
+      </div>
+      <ul class="sidebar-nav">
+         <li class="active">
+            <a href="dashboard" class="hover"><i class="fa fa-dashboard"></i>Dashboard</a>
+         </li>
+         <li ><a href="manage-customer" class="hover"><i class="fa fa-address-card" ></i> My Account</a></li>
+
+         <li>
+            <a href="mypost" class="hover"><i class="fa fa-list-alt"></i>My Post</a>
+         </li>
+         <li>
+            <a href="media" class="hover"><i class="fa fa-picture-o"></i>Media Library</a>
+         </li>
+         <li>
+            <a href="terms" class="hover"><i class="fa fa-comments-o"></i>Terms and Conditions</a>
+         </li>
+    
+ 
+  
+      </ul>
+   </aside>
+   <div id="navbar-wrapper">
+      <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+            <div class="header-cont d-flex justify-content-between">
+               <div class="navbar-header">
+                  <a href="#" class="navbar-brand" id="sidebar-toggle"><i class="fa fa-bars"></i>
+                  <img src="images/icons/logo.png" class="mobile-logo"></a>
+                  
+               </div>
+               <div class="head-right">
+                  <ul>
+                     <li class="border-rightss">
+                       <span style="color: white;font-size: 18px;padding: 9px 2px 9px 15px; font-weight: 100;">Welcome John</span>
+                        <div class="dropdown show">
+  <a class="basic" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+    Basic Account <i class="fa fa-angle-down"></i>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Primary Account</a>
+    <!-- <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a> -->
+  </div>
+</div>
+                     </li>
+                     <li><a href="registration" style="color: white;font-size: 18px;">Log Out</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+   </div>
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+  background: white;
+}
+.blink{
+   width: 77px;
+    height: 43px;
+    padding: 0px;
+    text-align: center;
+    line-height: 0;
+  }
+  span.blingg{
+   font-size: 18px;
+    color: white;
+    animation: blink 1s linear infinite;
+    position: absolute;
+    top: 57px;
+    left: 109px;
+  }
+@keyframes blink{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
+
+</style>
+<!----------------COntent start-------------->
+<section id="content-wrapper">
+ 
+  <div class="container-fluid">
+    <div class="row p-t-b-20">
+
+      </div>
+      <div class="col-md-12">
+        <div class="form-card no-b">
+          <div class="login-form-card">
+            <div class="add_category head-div mb-20">
+                <h3 class="add_name">Dashboard</h3>
+                
+            </div>
+            <div  class="row">
+              <div id="chartdiv"></div>
+          </div>
+            <div class="whats-new">
+              <h3 class="whatsnew">Whats New</h3>
+              <div class="blink"><span class="blingg"><img src="images/new.png"></span></div>
+            </div>
+            <div class="new-terms">
+              <h3 class="newterms">New Terms and conditions</h3>
+            </div>
+            <br><br>
+            <div class="rows-body">
+           <div class="row">
+            
+             <div class="post-overview">
+               <h3 class="postoverview">Post Overview</h3>
+             </div>
+             <div class="col-md-3">
+              <div>
+               <div class="card color1">
+  <div class="card-body ">
+    <div class="flexx">
+    <h5 class="card-title">Post<br> Online</h5>
+    <span class="twenty">20</span>
+  </div>
+    </div>
+  </div>
+</div>
+             </div>
+              <div class="col-md-3">
+              <div>
+               <div class="card color2">
+  <div class="card-body ">
+     <div class="flexx">
+    <h5 class="card-title">Post in <br>drafts</h5>
+    <span class="twenty">20</span>
+  </div>
+    </div>
+  </div>
+</div>
+             </div>
+              <div class="col-md-3">
+              <div>
+               <div class="card color3">
+  <div class="card-body ">
+    <div class="flexx">
+    <h5 class="card-title">Post Pending<br> Review</h5>
+    <span class="twenty">20</span>
+  </div>
+    </div>
+  </div>
+</div>
+             </div>
+              <div class="col-md-3">
+              <div>
+               <div class="card color4">
+  <div class="card-body ">
+     <div class="flexx">
+    <h5 class="card-title">Post<br> Rejected</h5>
+    <span class="twenty">20</span>
+  </div>
+    </div>
+  </div>
+</div>
+             </div>
+           </div>
+         </div>
+          <div class="new-terms-1">
+            <div class="btn-flexx">
+              <h3 class="newterms-1">Write Something New</h3>
+              <button class="btn btn-outline-primary">Create New Post</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!------------Delete messege Modal Popup Start------->
+<div class="modal fade in sp-map" id="modal-default2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Confirm</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="font-size: 32px;">×</span>
+          </button>
+                
+      </div>
+      <div class="modal-body">
+        <div class="paper">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="container-fluid">
+                                   <!--  <div class="login-form-content"> -->
+                <form action="javascript:(0);">
+                  <div class="row">
+                      <p>Are you sure you want to Delete?</p>
+                    <div class="col-md-6">
+                        <button type="submit" class="buttons-action btn-block" >Yes</button>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <button type="submit" class="buttons-action btn-block" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+                  
+                      <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!--------------------Delete Message Modal Ends---------------->
+</section>
+ 
+
+
+<!-- {{!-- <?php include( 'include/admin-footer.php'); ?> --}} -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-multiselect.js"></script>
+ <!--  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+  <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/select2.min.js"></script>
+ <!--    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+  "date": "2012-03-01",
+  "price": 20
+}, {
+  "date": "2012-03-02",
+  "price": 75
+}, {
+  "date": "2012-03-03",
+  "price": 15
+}, {
+  "date": "2012-03-04",
+  "price": 75
+}, {
+  "date": "2012-03-05",
+  "price": 158
+}, {
+  "date": "2012-03-06",
+  "price": 57
+}, {
+  "date": "2012-03-07",
+  "price": 107
+}, {
+  "date": "2012-03-08",
+  "price": 89
+}, {
+  "date": "2012-03-09",
+  "price": 75
+}, {
+  "date": "2012-03-10",
+  "price": 132
+}, {
+  "date": "2012-03-11",
+  "price": 380
+}, {
+  "date": "2012-03-12",
+  "price": 56
+}, {
+  "date": "2012-03-13",
+  "price": 169
+}, {
+  "date": "2012-03-14",
+  "price": 24
+}, {
+  "date": "2012-03-15",
+  "price": 147
+}];
+
+// Create axes
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.grid.template.location = 0;
+dateAxis.renderer.minGridDistance = 50;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.logarithmic = true;
+valueAxis.renderer.minGridDistance = 20;
+
+// Create series
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.valueY = "price";
+series.dataFields.dateX = "date";
+series.tensionX = 0.8;
+series.strokeWidth = 3;
+
+var bullet = series.bullets.push(new am4charts.CircleBullet());
+bullet.circle.fill = am4core.color("#fff");
+bullet.circle.strokeWidth = 3;
+
+// Add cursor
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.fullWidthLineX = true;
+chart.cursor.xAxis = dateAxis;
+chart.cursor.lineX.strokeWidth = 0;
+chart.cursor.lineX.fill = am4core.color("#000");
+chart.cursor.lineX.fillOpacity = 0.1;
+
+// Add scrollbar
+chart.scrollbarX = new am4core.Scrollbar();
+
+// Add a guide
+let range = valueAxis.axisRanges.create();
+range.value = 90.4;
+range.grid.stroke = am4core.color("#396478");
+range.grid.strokeWidth = 1;
+range.grid.strokeOpacity = 1;
+range.grid.strokeDasharray = "3,3";
+range.label.inside = true;
+range.label.text = "Average";
+range.label.fill = range.grid.stroke;
+range.label.verticalCenter = "bottom";
+
+}); // end am4core.ready()
+</script>
