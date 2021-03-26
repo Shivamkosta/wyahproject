@@ -5,8 +5,8 @@
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="css/admin.css">
-   <link rel="stylesheet" type="text/css" href="css/responsive.css">
+   <link rel="stylesheet" type="text/css" href="/css/admin.css">
+   <link rel="stylesheet" type="text/css" href="/css/responsive.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -22,19 +22,13 @@
     width: 21px;
 }
 </style>
-
-
-
 <body style="background-color:black;">
-
-
-
 <!-- Header Section-->
 <div class="main__div" style="background-image: url();">
   <div class="container">
     <div class="row">
     <div class="col-md-6">
-       <img src="images/Group4082.png">
+       <img src="/images/Group4082.png">
       </div>
       <div class="col-md-6" >
         <div >
@@ -43,29 +37,29 @@
        <p class="welcome-p">Welcome! Let's get you on board.</p>
      </div>
      <div>
-      <form action="/api/registration" method="post" enctype="multipart/form-data">
+      <form action="/users/registration" method="post">
          <input type="text"
             name="fullname"
+            value="<%= fullname %>"
             required="true" 
             class="form-control password" 
-            placeholder="Full Name"
-            value="<%= fullname %>"
+            placeholder="Full Name"            
             autocomplete="off" 
           />
 
           <input type="email" 
             name="email" 
+            value="<%= email %>"
             required="true" 
             class="form-control password" 
-            placeholder="Email"
-            value="<%= email %>"
+            placeholder="Email"            
             autocomplete="off"
           />
 
           <div class="form-group" >
             
-            <select class="form-control password" name="city"  
-            autocomplete="off" value="<%= city %>"  required="true" id="exampleFormControlSelect1">
+            <select type="text" class="form-control password" name="city" value="<%= city %>"
+            autocomplete="off" required="true" id="exampleFormControlSelect1">
                   <option>Agra</option>
                   <option>Gwalior</option>
                   <option>Indore</option>
@@ -77,9 +71,9 @@
             <input 
               id="phone" 
               name="phone" 
-              required="true" 
-              type="number" 
               value="<%= phone %>"
+              required="true" 
+              type="text"              
               autocomplete="off" 
               class="form-control password"
             />
@@ -90,25 +84,25 @@
             <input 
               type="password" 
               name="password" 
+              value="<%= password %>"
               required="true"  
               class="form-control password"
-              placeholder="Password" 
-              value="<%= password %>"
+              placeholder="Password"              
               autocomplete="off" 
             />
 
             <input 
               type="password" 
               name="confirmpassword" 
+              value="<%= confirmpassword %>"
               required="true"  
               class="form-control password" 
-              placeholder="Confirm-Password" 
-              value="<%= confirmpassword %>"
+              placeholder="Confirm-Password"               
               autocomplete="off" 
             />
 
           <div class="keep-me-signes">
-            <input type="checkbox"  required="true" name=""/>&nbsp;<span class="ticking">By ticking "Register" i accept the<br><p class="wyh-ticking">WYAH Terma and Conditions</p></span>
+            <input type="checkbox"  required="true" />&nbsp;<span class="ticking">By ticking "Register" i accept the<br><p class="wyh-ticking">WYAH Terma and Conditions</p></span>
           </div>
    
           <div class="captchs">
@@ -129,12 +123,13 @@
           </div>
         </div>
         </div>
-      </form>
-       <div class="register-in-button">
-          <a href="signin"> <button class="btn btn-primary register">Register</button></a>
+        <div class="register-in-button">
+          <a> <button class="btn btn-primary register" type="submit">Register</button></a>
         </div>
+      </form>
+      
          <div class="sign-register">
-          <p>Dont have an account?<a href="signin" style="color: #587FFF;">Sign In</a></p>
+          <p>Dont have an account?<a href="/users" style="color: #587FFF;">Sign In</a></p>
         </div>
      </div>
      <div>

@@ -30,38 +30,38 @@
          <h1 class="sign-inn">Sign In</h1>
         </div>
         <div class="form-padding">
-          <form action="/api/dashboard" method="post" enctype="multipart/form-data">
+          <form action="/users/signin" method="post">
           
             <input 
-              type="text" 
-              name="email" 
+              type="email" 
+              name="email"
+               
               class="form-control password" 
               placeholder="email" 
               autocomplete="off"
-              required="true"
-              
-              />
-          
+              required="true"              
+              />          
             <input 
               type="password" 
-              name="password" 
+              name="password"
+               
               class="form-control password" 
-              placeholder="password"
-              
+              placeholder="password"              
               autocomplete="off"
               required="true"
             />
          
-          <a href="forgetpassword" style="color: #587FFF;">Fogot Password?</a>
+          <a href="/users/forgetpassword" style="color: #587FFF;">Fogot Password?</a>
           <div class="keep-me-signed">
             <input type="checkbox" name="">&nbsp;<span>Keep me signed in</span>
           </div>
-          </form>
           <div class="sign-in-button">
-          <a href="dashboard"> <button class="btn btn-primary signins">Sign In</button></a>
-        </div>
+            <a> <button type="submit" class="btn btn-primary signins">Sign In</button></a>
+          </div>
+          </form>
+          
         <div class="sign-register">
-          <p>Dont have an account?<a href="" style="color: #587FFF;">Register Now</a></p>
+          <p>Dont have an account?<a href="/users/registration" style="color: #587FFF;">Register Now</a></p>
         </div>
         </div>
       </div>
