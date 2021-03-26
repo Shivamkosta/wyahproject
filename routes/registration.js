@@ -115,157 +115,176 @@ router.get('/dashboard',(req,res)=>{
 router.get('/forgetpassword',(req,res)=>{
   res.render('forgetpassword')
 })
+router.post('/forgetpassword',(req,res)=>{
 
+  console.log('forgetpassword :',req.body);
+  var e = req.body.email;
+  console.log("email :", e);
+  connection.query(
+    "SELECT * from wyah WHERE email=?",
+    [req.body.email],(err, rows) => {
+      if (err) {
+        console.log("error :", err);
+      }
+      console.log("rows, rows.length :", rows, rows.length);
+      if (rows.length > 0) {
+        console.log(" existing user");
+        var otp = Math.floor(1000 + Math.random() * 9000);
+        console.log("otp :", otp);
+        //generate a signed token with user email with secret
+        const token = jwt.sign(req.body.email, "digimonk");
+        console.log("generate token :", token);
+
+        //save token in cookies
+        res.cookie("token", token, { expire: new Date() + 9999 });
+
+        connection.query("UPDATE wyah SET otp =?, WHERE email=?", [otp, req.body.email], (err, results) => {
+          console.log("results :", results);
+        })
+        // res.json({
+        //   token,
+        //   otp,
+        //   data: rows[0],
+        // });
+        res.redirect("/users/otp")
+        const transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false,
+          service: "gmail",
+          auth: {
+            user: "shivamkosti570@gmail.com",
+            pass: "008602750983",
+          },
+        });
+
+        var mailOption = {
+          from: "shivamkosti570@gmail.com",
+          to: req.body.email,
+          // mail,
+          subject: "send mail",
+          html: `<p> we have received a request to have your password reset for <b>KOOKY ACCOUNT</b>.
+        if you did not make this request ,plese ignore this email.<br>
+        <br> To reset your password,plese <a href = "#"><b>visit the link</b></a> </p> <hr>
+        <h3><b> Having trouble?</b></h3>
+        <p>if the above link does not work try copying this link into your browser.</p>
+        <p>${otp}</p></hr>
+        <h3><b> Question ?<b></h3>
+        <p>plese let us know if there's anything we can help you with by replying to this email or by emailing <b>Kooky.com</b></p>`,
+        };
+
+        transporter.sendMail(mailOption, function (err, info) {
+          if (err) {
+            console.log("error :", err);
+          } else {
+            console.log("Email Sent successfully :" + info.response);
+          }
+        });
+      }
+      else {
+        console.log("new user");
+        var otp = Math.floor(1000 + Math.random() * 9000);
+        console.log("otp :", otp);
+
+        //generate a signed token with user email with secret
+        const token = jwt.sign(req.body.email, "digimonk");
+        console.log("generate token :", token);
+
+        //save token in cookies
+        res.cookie("token", token, { expire: new Date() + 9999 });
+
+        connection.query(
+          "insert into joining(email) value(?)",
+          [req.body.email],
+          (err, user) => {
+
+            // console.log("mail :", mail);
+            if (err) {
+              res.status(400).json({
+                status:false
+              });
+              console.log('mail not send :',err)
+              connection.query("UPDATE wyah SET otp =?,WHERE email=?", [otp, req.body.email], (err, results) => {
+                console.log(results);
+              })
+            }
+
+
+            const transporter = nodemailer.createTransport({
+              host: "smtp.gmail.com",
+              port: 587,
+              secure: false,
+              service: "gmail",
+              auth: {
+                user: "shivamkosti570@gmail.com",
+                pass: "008602750983",
+              },
+            });
+
+            let mailOption = {
+              from: "shivamkosti570@gmail.com",
+              to: e,
+
+              subject: "send mail",
+              html: `<p> we have received a request to have your password reset for <b>KOOKY ACCOUNT</b>.
+        if you did not make this request ,plese ignore this email.<br>
+        <br> To reset your password,plese <a href = "#"><b>visit the link</b></a> </p> <hr>
+        <h3><b> Having trouble?</b></h3>
+        <p>if the above link does not work try copying this link into your browser.</p>
+        <p>${otp}</p></hr>
+        <h3><b> Question ?<b></h3>
+        <p>plese let us know if there's anything we can help you with by replying to this email or by emailing <b>Kooky.com</b></p>`,
+            };
+
+            transporter.sendMail(mailOption, function (err, info) {
+              if (err) {
+                res.status(400).json({
+                  status:false
+                })
+                console.log("error :",err);
+              } else {
+                res.redirect('/users/otp')
+                console.log("Email Sent successfully :" + info.response);
+              }
+            });
+
+            // res.status(200).json({
+            //   status: "success",
+            //   token,
+            //   otp,
+
+            // });
+            res.redirect('/users/otp')
+          }
+        );
+      }
+    }
+  );
+
+})
 router.get('/otp',(req,res)=>{
   res.render('otp');
 })
 
-router.post('/forgetpassword',(req,res)=>{
-
-    console.log('forgetpassword :',req.body);
-    var e = req.body.email;
-    console.log("email :", e);
-    connection.query(
-      "SELECT * from wyah WHERE email=?",
-      [req.body.email],(err, rows) => {
-        if (err) {
-          console.log("error :", err);
-        }
-        console.log("rows, rows.length :", rows, rows.length);
-        if (rows.length > 0) {
-          console.log(" existing user");
-          var otp = Math.floor(1000 + Math.random() * 9000);
-          console.log("otp :", otp);
-          //generate a signed token with user email with secret
-          const token = jwt.sign(req.body.email, "digimonk");
-          console.log("generate token :", token);
-  
-          //save token in cookies
-          res.cookie("token", token, { expire: new Date() + 9999 });
-  
-          connection.query("UPDATE wyah SET otp =?, WHERE email=?", [otp, req.body.email], (err, results) => {
-            console.log("results :", results);
-          })
-          // res.json({
-          //   token,
-          //   otp,
-          //   data: rows[0],
-          // });
-          res.redirect("/users/otp")
-          const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            service: "gmail",
-            auth: {
-              user: "shivamkosti570@gmail.com",
-              pass: "008602750983",
-            },
-          });
-  
-          var mailOption = {
-            from: "shivamkosti570@gmail.com",
-            to: req.body.email,
-            // mail,
-            subject: "send mail",
-            html: `<p> we have received a request to have your password reset for <b>KOOKY ACCOUNT</b>.
-          if you did not make this request ,plese ignore this email.<br>
-          <br> To reset your password,plese <a href = "#"><b>visit the link</b></a> </p> <hr>
-          <h3><b> Having trouble?</b></h3>
-          <p>if the above link does not work try copying this link into your browser.</p>
-          <p>${otp}</p></hr>
-          <h3><b> Question ?<b></h3>
-          <p>plese let us know if there's anything we can help you with by replying to this email or by emailing <b>Kooky.com</b></p>`,
-          };
-  
-          transporter.sendMail(mailOption, function (err, info) {
-            if (err) {
-              console.log("error :", err);
-            } else {
-              console.log("Email Sent successfully :" + info.response);
-            }
-          });
-        } else {
-          console.log("new user");
-          var otp = Math.floor(1000 + Math.random() * 9000);
-          console.log("otp :", otp);
-  
-          //generate a signed token with user email with secret
-          const token = jwt.sign(req.body.email, "digimonk");
-          console.log("generate token :", token);
-  
-          //save token in cookies
-          res.cookie("token", token, { expire: new Date() + 9999 });
-  
-          connection.query(
-            "insert into joining(email) value(?)",
-            [req.body.email],
-            (err, user) => {
-  
-              // console.log("mail :", mail);
-              if (err) {
-                res.status(400).json({
-                  status:false
-                });
-                console.log('mail not send :',err)
-                connection.query("UPDATE wyah SET otp =?,WHERE email=?", [otp, req.body.email], (err, results) => {
-                  console.log(results);
-                })
-              }
-  
-  
-              const transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 587,
-                secure: false,
-                service: "gmail",
-                auth: {
-                  user: "shivamkosti570@gmail.com",
-                  pass: "008602750983",
-                },
-              });
-  
-              let mailOption = {
-                from: "shivamkosti570@gmail.com",
-                to: e,
-  
-                subject: "send mail",
-                html: `<p> we have received a request to have your password reset for <b>KOOKY ACCOUNT</b>.
-          if you did not make this request ,plese ignore this email.<br>
-          <br> To reset your password,plese <a href = "#"><b>visit the link</b></a> </p> <hr>
-          <h3><b> Having trouble?</b></h3>
-          <p>if the above link does not work try copying this link into your browser.</p>
-          <p>${otp}</p></hr>
-          <h3><b> Question ?<b></h3>
-          <p>plese let us know if there's anything we can help you with by replying to this email or by emailing <b>Kooky.com</b></p>`,
-              };
-  
-              transporter.sendMail(mailOption, function (err, info) {
-                if (err) {
-                  res.status(400).json({
-                    status:false
-                  })
-                  console.log("error :",err);
-                } else {
-                  res.redirect('/users/otp')
-                  console.log("Email Sent successfully :" + info.response);
-                }
-              });
-  
-              // res.status(200).json({
-              //   status: "success",
-              //   token,
-              //   otp,
-  
-              // });
-              res.redirect('/users/otp')
-            }
-          );
-        }
+router.post('/otp',(req,res)=>{
+  console.log('otp :',req.body);
+  var joinotp = req.body.otp;
+  console.log("joinotp :",joinotp);
+  var a = joinotp.join("");
+  console.log("join :",a);
+  connection.query("SELECT * from wyah WHERE otp=?",
+    [a], (err, rows) => {
+      console.log("hii",rows[0].otp)
+      if (rows[0].otp == a) {
+        console.log("true")
+        res.redirect('/users/dashboard');
+        // res.status(200).json({ status: "You have successfully verified" })
+      } else {
+        res.status(400).json({ status: "failur", message: "Incorrect otp please enter your correct otp" })
       }
-    );
-  
+    })
 })
+
 
 
 // registration api

@@ -42,18 +42,21 @@
       <div class="col-md-6" >
         <div class="inputs-sets">
           <h1 class="register-3">Enter OTP</h1>
-   <div class="userinput"> 
-     <input type="number" name="otp"id="ist" maxlength="1" onkeyup="clickEvent(this,'sec')">
-      <input type="number" name="otp" id="sec" maxlength="1" onkeyup="clickEvent(this,'third')">
-       <input type="number" name="otp" id="third" maxlength="1" onkeyup="clickEvent(this,'fourth')">
-        <input type="number" name="otp"  id="fourth"maxlength="1">
-   </div>
-     <p class="john">Enter OTP Which Has Been Sent To <br>John@xyz.com</p>
-<div class="verify">
-    <a href="dashboard"> <button class="btn btn-primary verify">Verify</button></a>
-<p class="recieve-otp">Did'nt recieve OTP ?</p>
-   </div>
-    </div>
+          <form action="/users/otp" method="POST"> 
+            <div class="userinput">
+                <input type="number" name="otp"id="ist" maxlength="1" onkeyup="clickEvent(this,'sec')">
+                <input type="number" name="otp" id="sec" maxlength="1" onkeyup="clickEvent(this,'third')">
+                <input type="number" name="otp" id="third" maxlength="1" onkeyup="clickEvent(this,'fourth')">
+                <input type="number" name="otp"  id="fourth"maxlength="1">
+            </div>
+                <p class="john">Enter OTP Which Has Been Sent To <br>John@xyz.com</p>
+            <div class="verify">
+                <a> <button type="submit" class="btn btn-primary verify">Verify</button></a>
+                <p class="recieve-otp">Did'nt recieve OTP ?</p>
+          
+            </div>
+          </form>
+        </div>
 
   </div>
   </div>
