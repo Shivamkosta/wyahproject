@@ -108,14 +108,14 @@ router.post('/registration',(req,res)=>{
   // if(!errors) {
 
     // hash password
-    bcrypt.hash([req.body.password,req.body.confirmpassword],10,(err,hash)=>{
-      if(err){
-        return res.status(500).json({
-          status:false
-        })
-        console.log("error",err)
-      }
-    })
+    // bcrypt.hash([req.body.password,req.body.confirmpassword],10,(err,hash)=>{
+    //   if(err){
+    //     return res.status(500).json({
+    //       status:false
+    //     })
+    //     console.log("error",err)
+    //   }
+    // })
 
       // insert query
       connection.query('INSERT INTO wyah (fullname,email,city,phone,password,confirmpassword) VALUES(?,?,?,?,?,?)',
@@ -378,25 +378,13 @@ router.get('/manage-customer',(req,res)=>{
   
 })
 
+//update profile
 router.post('/manage-customer',(req,res)=>{
 
   console.log("hii",req.body);
 
-  // let id = req.body.id;
-  // let fullname = req.body.fullname;
-  // let city = req.body.city;
-  // let phone = req.body.phone;
-  // let country = req.body.country;
-  // let accounttype = req.body.accounttype;
-
-  // var form_data = {
-  //   fullname : fullname,
-  //   city : city,
-  //   phone : phone,
-  //   country : country,
-  //   accounttype : accounttype
-  // }
-  connection.query("UPDATE wyah SET fullname='"+req.body.fullname+"',phone='"+req.body.phone+"',city='"+req.body.city+"',country='"+req.body.country+"',accounttype='"+req.body.accounttype+"' WHERE id = "+req.body.id,[req.body.fullname,req.body.city,req.body.phone,req.body.country,req.body.accounttype],(err,result)=>{
+  connection.query("UPDATE wyah SET fullname='"+req.body.fullname+"',phone='"+req.body.phone+"',city='"+req.body.city+"',company='"+req.body.company+"',country='"+req.body.country+"',accounttype='"+req.body.accounttype+"' WHERE id = "+req.body.id,
+  (err,result)=>{
     if(err){
       res.status(400).json({
         status:false
@@ -455,6 +443,69 @@ router.post('/manage-customer',(req,res)=>{
   //     }
   //   })
   
+})
+
+// update password
+router.post('/manage-customer-update',(req,res)=>{
+  console.log("hiii :",req.body);
+
+  // connection.query('UPDATE wyah SET ? WHERE id='+req.body.id,
+  // [req.body.password,req.body.newpassword,req.body.confirmpassword],(err,result)=>{
+  //   if(err){
+  //     res.status(400).json({
+  //       status:false
+  //     })
+  //     console.log("error :",err);
+  //   }
+  //   if(req.body.newpassword === req.body.confirmpassword){
+  //     res.render('dashboard',{
+  //       id:req.params.id,
+  //       password:req.body.password,
+  //       newpassword:req.body.newpassword,
+  //       confirmpassword:req.body.confirmpassword
+  //     })
+  //   }
+  //   else{
+  //     res.redirect('/users');
+  //   }
+  // })
+
+  connection.query(`UPDATE wyah SET password=?,password=?,confirmpassword=? WHERE id = ?`,
+  [req.body.oldpassword,req.body.password,req.body.confirmpassword,req.body.id],
+  (err,rows)=>{
+    if(err){
+      res.status(400).json({
+        status:false
+      })
+      console.log("error :",err);
+    }
+    if(req.body.password === req.body.confirmpassword){
+      // res.status(200).json({
+      //   status:true,
+      //   message:'password update successfully',
+      //   id:req.params.id
+      // })
+      res.render('manage-customer',{data:rows});
+      console.log("password update successfully",rows);
+    }
+    else{
+      res.status(404).json({
+        status:false,
+        message:'does not password match'
+      })
+      console.log("error :",err)
+    }
+  })
+
+})
+
+
+router.get('/media',(req,res)=>{
+  res.render('media')
+})
+//image upload
+router.post('/media',(req,res)=>{
+  console.log("hii :",req.files);
 })
 
 module.exports = router;
