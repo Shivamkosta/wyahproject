@@ -84,7 +84,7 @@
        <div class="personal-info">
          <h3 class="prsnal-info">Personal Info</h3>
        </div>
-        <form action="/users/manage-customer" method="post">
+        <form action="/users/manage-customer" method="POST">
         <% for(var i = 0; i< data.length; i++) { %>
        <div class="col-md-6">       
           <div class="form-group">            
@@ -96,7 +96,7 @@
        <div class="col-md-6">
         <div class="form-group">
               <label  class="f-name">Company</label>
-              <input type="text" class="form-control"name="company"value="<%= data[i].company%>"placeholder="John smith"/>
+              <input type="text" class="form-control"name="company" value="<%= data[i].company%>"placeholder="John smith"/>
         </div>
     </div>
     <div class="col-md-12">
@@ -144,7 +144,7 @@
        <% } %>
        <div class="col-md-6">
         <div class="secndary">
-            <button class="btn btn-primary acount">Update</button>
+            <button type="submit" class="btn btn-primary acount">Update</button>
         </div>
       </div> 
       
@@ -157,7 +157,7 @@
       </div>
       <div class="col-md-6">
          <div class="secndary">
-             <button type="button" class="btn btn-outline-secondary">Delete My account</button>
+             <button type="submit" class="btn btn-outline-secondary">Delete My account</button>
          </div>
        </div>
             
@@ -192,7 +192,7 @@
         </div>
       </div>
       <div class="col-md-12 text-right">
-         <button class="btn btn-primary acounts-1">Update</button>
+         <button type="submit" class="btn btn-primary acounts-1">Update</button>
       </div>     
     </div>
     <% } %>

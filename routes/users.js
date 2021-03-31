@@ -10,6 +10,38 @@ router.get('/home', function(req, res, next) {
   res.render('home');
 });
 
+router.get('/videoupload',(req,res)=>{
+  res.render('video')
+})
+
+router.post('/videoupload',(req,res)=>{
+  console.log('req.files:' , req.files);
+    // var file = req.files.upload.data
+    // console.log("file :",file);
+    // var filename = req.files.upload.name;
+    // console.log("filename :",filename);
+    // var buffer = new Buffer(file, 'binary')
+    // // console.log("BUFFER:" + buffer)
+    // var imgsrc = `./uploads/${filename}` 
+    // console.log("imgsrc :",imgsrc);
+    // fs.writeFile(imgsrc, buffer, function(err,written){
+    //     if(err) {
+    //       console.log("error :",err)
+    //     }
+    //      else {
+    //       console.log("Successfully written");
+    //      }
+    //  });
+    //  const imageUrl = `${req.protocol}://${req.hostname}:${process.env.PORT}/${filename}`;
+    //     console.log("imgurl :",imageUrl);
+  
+    // 
+    // if( file.length === 0 || file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.mimetype === "image/gif" ) {
+     
+
+    //  }
+})
+
 // exports.insertescortpicture =  catchAsync(
 //   async (req, res, next) => {
 //     let images = [];

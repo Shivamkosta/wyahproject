@@ -173,15 +173,14 @@ video {
 
 <!----------------COntent start-------------->
 <section id="content-wrapper">
- 
-  <div class="container-fluid">
-    <div class="row p-t-b-20">
-
-      </div>
-      <div class="col-md-12">
-        <div class="form-card no-b">
-          <div class="login-form-card">
-            <div class="add_category head-div mb-20">
+  <form action="/users/media" method="post">
+                    <div class="container-fluid">
+                        <div class="row p-t-b-20">
+                    </div>
+                    <div class="col-md-12">
+            <div class="form-card no-b">
+                <div class="login-form-card">
+              <div class="add_category head-div mb-20">
                 <h3 class="add_name">Media Library</h3>
                 
             </div>
@@ -240,34 +239,34 @@ video {
               <h3 class="whatsnew">Image Upload</h3>
             </div>
             <div class="row">
-                   <div class="col-md-12">
+          <div class="col-md-12">
         
           <div class="form-group">
-            <form action="/users/media" method="post">
-            <label  class="f-name">Upload File</label>
-            <div class="preview-zone hidden">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <div><b>Preview</b></div>
-                  <div class="box-tools pull-right">
-                   
+            
+              <label  class="f-name">Upload File</label>
+                  <div class="preview-zone hidden">
+                      <div class="box box-solid">
+                          <div class="box-header with-border">
+                            <div><b>Preview</b></div>
+                            <div class="box-tools pull-right">
+                          </div>
+                      </div>
+                      <div class="box-body"></div>
                   </div>
-                </div>
-                <div class="box-body"></div>
               </div>
-            </div>
             <div class="dropzone-wrapper">
               <div class="dropzone-desc">
                 <i class="glyphicon glyphicon-download-alt"></i>
                 <p>Choose an image file or drag it here.</p>
               </div>
-              <input type="file" name="img_logo" class="dropzone">
+              <input type="file" name="img_logo" class="dropzone"/>
             </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary pull-right">Upload</button>
+            </div>
+          
           </div>
-          <div class="col-md-12">
-          <button type="submit" class="btn btn-primary pull-right">Upload</button>
-        </div>
-      </form>
+          
         </div>
             </div>
           </div>
@@ -280,7 +279,7 @@ video {
 
 
    <!------------Delete messege Modal Popup Start------->
-<div class="modal fade in sp-map" id="modal-default2">
+  <div class="modal fade in sp-map" id="modal-default2">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -318,9 +317,9 @@ video {
       </div>
     </div>
   </div>
-</div>
-
-        <!--------------------Delete Message Modal Ends---------------->
+  </div>
+</form> 
+   <!--------------------Delete Message Modal Ends---------------->
 </section>
  
 

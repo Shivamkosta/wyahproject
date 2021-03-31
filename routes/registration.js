@@ -160,6 +160,7 @@ router.get('/forgetpassword',(req,res)=>{
   res.render('forgetpassword')
 });
 
+//forgetpassword send otp on mail api
 router.post('/forgetpassword',(req,res)=>{
 
   console.log('forgetpassword :',req.body);
@@ -323,6 +324,7 @@ router.get('/otp',(req,res)=>{
   res.render('otp');
 });
 
+//send otp api
 router.post('/otp',(req,res)=>{
   console.log('otp :',req.body);
   var joinotp = req.body.otp;
@@ -378,7 +380,7 @@ router.get('/manage-customer',(req,res)=>{
   
 })
 
-//update profile
+//update customer profile api
 router.post('/manage-customer',(req,res)=>{
 
   console.log("hii",req.body);
@@ -396,79 +398,12 @@ router.post('/manage-customer',(req,res)=>{
     }
   })
   
-  // const userId = req.body.id;
-  //   let sql = "update wyah SET fullname='"+req.body.fullname+"',phone='"+req.body.phone+"',city='"+req.body.city+"',country='"+req.body.country+"',accounttype='"+req.body.accounttype+"' where id ="+userId;
-  //   connection.query(sql,(err, results) => {
-  //     if(err) {
-  //       res.status(403).json({
-  //         status:false
-  //       });
-  //       console.log("error :",err);
-  //     }
-  //     res.render('manage-customer',{data:results});
-  //   });
-
-  
-  // connection.query("SELECT * FROM wyah WHERE email = ?",
-  //   [req.body.email],(err,rows)=>{
-  //     if(err){
-  //       res.status(404).json({
-  //         status:false
-  //       });
-  //       console.log("error :",err)
-  //     }
-  //     console.log("rows , rows.length :",rows,rows.length);
-  //     if(rows.length > 0){
-  //       connection.query('UPDATE wyah SET ? WHERE email = ?'
-  //       [req.body.email,req.body.fullname,req.body.city,req.body.phone,req.body.country,req.body.companyname,req.body.accounttype],
-  //       (err,rows)=>{
-  //         if(err){
-  //           res.status(404).json({
-  //             status:false
-  //           });
-  //           console.log("error :",err);
-  //         }
-  //         else{
-  //           res.render('manage-customer',{
-  //             fullname:req.body.fullname,
-  //             city:req.body.city,
-  //             phone:req.body.phone,
-  //             company:req.body.company,
-  //             country:req.body.country,
-  //             accounttype:req.body.accounttype
-  //             // data:rows
-  //           })
-  //         }
-  //       })
-  //     }
-  //   })
   
 })
 
-// update password
+// update customer password api
 router.post('/manage-customer-update',(req,res)=>{
   console.log("hiii :",req.body);
-
-  // connection.query('UPDATE wyah SET ? WHERE id='+req.body.id,
-  // [req.body.password,req.body.newpassword,req.body.confirmpassword],(err,result)=>{
-  //   if(err){
-  //     res.status(400).json({
-  //       status:false
-  //     })
-  //     console.log("error :",err);
-  //   }
-  //   if(req.body.newpassword === req.body.confirmpassword){
-  //     res.render('dashboard',{
-  //       id:req.params.id,
-  //       password:req.body.password,
-  //       newpassword:req.body.newpassword,
-  //       confirmpassword:req.body.confirmpassword
-  //     })
-  //   }
-  //   else{
-  //     res.redirect('/users');
-  //   }
-  // })
 
   connection.query(`UPDATE wyah SET password=?,password=?,confirmpassword=? WHERE id = ?`,
   [req.body.oldpassword,req.body.password,req.body.confirmpassword,req.body.id],
@@ -499,6 +434,57 @@ router.post('/manage-customer-update',(req,res)=>{
 
 })
 
+// delete customer api
+router.post('/manage-customer-delete', (req, res) => {
+  console.log("hiiiiii :", req.body);
+  //admin middleware
+
+  connection.query('DELETE FROM wyah WHERE id = ?',[req.body.id],(err,rows)=>{
+    if(err){
+      res.status(404).json({
+        status:false
+      })
+      console.log("error :",err);
+    }
+    else{
+      // res.status(200).json({
+      //   status:true,
+      //   message:"delete successfully",
+      //   id:req.params.id
+      // });
+      // console.log("rows :",rows);
+      res.render('manage-customer',{data:rows});
+      console.log("delete successfully :",rows);
+      
+    }
+  })
+
+  // if (req.body.role === 'user') {
+  //   console.log("user");
+  //   res.status(403).json({
+  //     error: "Admin resource! Access denied"
+  //   })
+  // } else {
+  //   //sql query
+  //   let sql = `DELETE FROM joining
+  //     WHERE id = ${req.params.id}`;
+
+  //   //run query
+  //   connection.query(sql, (err, result) => {
+  //     if (err) throw err;
+  //     // res.json({ status: true, message: "delete successfully" });
+  //     console.log("result :", result);
+
+  //   })
+
+  //   res.status(201).json({
+  //     SUCCESS: true,
+  //     response: "delete successfully",
+  //     message: "Welcome to admin dashboard"
+  //   })
+  // }
+})
+
 
 router.get('/media',(req,res)=>{
   res.render('media')
@@ -506,6 +492,10 @@ router.get('/media',(req,res)=>{
 //image upload
 router.post('/media',(req,res)=>{
   console.log("hii :",req.files);
+})
+
+router.get('/mypost',(req,res)=>{
+  res.render('mypost');
 })
 
 module.exports = router;
